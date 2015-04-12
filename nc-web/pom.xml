@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>nc</artifactId>
+		<groupId>by.netcracker</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>by.netcracker</groupId>
+	<artifactId>nc-web</artifactId>
+	<packaging>war</packaging>
+	<name>nc-web</name>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>by.netcracker</groupId>
+			<artifactId>nc-domain</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>by.netcracker</groupId>
+			<artifactId>nc-dao</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>by.netcracker</groupId>
+			<artifactId>nc-serv</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+
+		<!-- jsr303 validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+		<!-- Servlet+JSP+JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<warSourceDirectory>src/main/webapp</warSourceDirectory>
+						<warName>netcracker</warName>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+					</configuration>
+				</plugin>
+<!--				<plugin>
+					<executions>
+						<execution>
+							<phase>install</phase>
+							<goals>
+								<goal>redeploy</goal>
+							</goals>
+						</execution>
+					</executions>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<url>${env.NLB_TOMCAT_URL}</url>
+						<server>${env.NLB_TOMCAT_SERVER}</server>
+						<warFile>target/netcracker.war</warFile>
+						<path>/netcracker</path>
+					</configuration>
+				</plugin>-->
+			</plugins>
+		</pluginManagement>
+		<finalName>netcracker</finalName>
+	</build>
+</project>
+

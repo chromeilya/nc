@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="NC_TEST" targetNamespace="NC_TEST">
+	<xsd:element name="dbmaintain_scripts" type="dbmaintain_scripts__type" />
+	<xsd:element name="T_STUDENT" type="T_STUDENT__type" />
+	<xsd:element name="T_GROUP" type="T_GROUP__type" />
+	<xsd:complexType name="dbmaintain_scripts__type">
+		<xsd:attribute name="succeeded" use="optional" />
+		<xsd:attribute name="file_last_modified_at" use="optional" />
+		<xsd:attribute name="executed_at" use="optional" />
+		<xsd:attribute name="checksum" use="optional" />
+		<xsd:attribute name="file_name" use="optional" />
+		<xsd:attribute name="version" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="T_STUDENT__type">
+		<xsd:attribute name="F_FIO" use="optional" />
+		<xsd:attribute name="F_ID" use="optional" />
+		<xsd:attribute name="F_GROUP_ID" use="optional" />
+		<xsd:attribute name="F_TYPE_STIPEND" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="T_GROUP__type">
+		<xsd:attribute name="F_ID" use="optional" />
+		<xsd:attribute name="F_NUM" use="optional" />
+		<xsd:attribute name="F_FACULT" use="optional" />
+	</xsd:complexType>
+</xsd:schema>

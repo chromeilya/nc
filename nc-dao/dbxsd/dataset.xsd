@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:dflt="NC_TEST">
+	<xsd:import namespace="NC_TEST" schemaLocation="NC_TEST.xsd" />
+	<xsd:element name="dataset">
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="dbmaintain_scripts" type="dflt:dbmaintain_scripts__type" />
+				<xsd:element name="T_STUDENT" type="dflt:T_STUDENT__type" />
+				<xsd:element name="T_GROUP" type="dflt:T_GROUP__type" />
+				<xsd:any namespace="NC_TEST" />
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
