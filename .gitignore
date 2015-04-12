@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+nc-web/.idea
+.idea
+nc-dao/target
+nc-domain/target
+nc-serv/target
+nc-dao/nc-dao.iml
+
+nc-serv/nc-serv.iml
+
+nc-domain/nc-domain.iml
+
+nc-web/nc-web.iml
+
+nc-web/target
+
+nc.iml
