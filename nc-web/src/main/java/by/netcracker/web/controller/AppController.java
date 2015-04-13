@@ -25,7 +25,7 @@ public class AppController {
 
 		List<Student> students = serv.getAllStudent();
 		model.addAttribute("students", students);
-		return "allemployees";
+		return "main";
 	}
 
 	/*
