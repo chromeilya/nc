@@ -82,8 +82,13 @@ public class AppController {
 		binder.registerCustomEditor(Group.class, "group", new PropertyEditorSupport() {
 			@Override
 			public void setAsText(String text) {
-				Group group=serv.getGroupById(Integer.parseInt(text));
-				setValue(group);
+				try {
+					Integer id = Integer.parseInt(text);
+					Group group=serv.getGroupById(id);
+					setValue(group);
+				}catch (NumberFormatException e) {
+					setValue(null);
+				}
 			}
 		});
 	}

@@ -19,10 +19,12 @@
         </tr>
         <tr>
           <td><label >Группа: </label></td>
-          <td><form:select path="group" items="${groups}" itemValue="id" itemLabel="facult" >
+          <td><form:select path="group" >
             <%--<c:forEach var="groupList" items="${groups}">
               <form:option value="${groupList}">${groupList.facult}</form:option>
             </c:forEach>--%>
+            <form:options  items="${groups}" itemValue="id" itemLabel="facult"/>
+            <form:option label="Без факультета" value="${null}"/>
           </form:select></td>
         </tr>
         <tr>
