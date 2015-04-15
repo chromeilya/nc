@@ -2,6 +2,7 @@ package by.netcracker.serv;
 
 import by.netcracker.dao.Dao;
 import by.netcracker.dao.exceptions.DaoException;
+import by.netcracker.pojo.Group;
 import by.netcracker.pojo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class ServImpl implements Serv {
     @Autowired
     private Dao<Student, Integer> studentDao;
 
+    @Autowired
+    private Dao<Group, Integer> groupDao;
+
 
     @Override
     public List<Student> getAllStudent() {
@@ -32,4 +36,56 @@ public class ServImpl implements Serv {
         }
         return students;
     }
+
+    @Override
+    public List<Group> getAllGroup(){
+      List<Group> groups=null;
+        try {
+            groups=groupDao.getAll();
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+        return groups;
+    };
+
+    @Override
+    public Boolean deleteStudentById(Integer id){
+        Student student;
+        try {
+            student=studentDao.get(id);
+            studentDao.delete(student);
+            return true;
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    @Override
+    public Boolean saveStudent(Student student){
+
+        try {
+            studentDao.add(student);
+            return true;
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    };
+
+    @Override
+    public Group getGroupById(Integer id){
+      Group group=null;
+        try {
+           group=groupDao.get(id);
+
+        }catch (DaoException e){
+            e.printStackTrace();
+        }
+        return group;
+    };
+
+
 }
