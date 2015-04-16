@@ -53,11 +53,12 @@ public class AppConfig {
 
 		return tilesConfigurer;
 	}
-/*	@Bean
+	@Bean
 	public MessageSource messageSource() {
 	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setDefaultEncoding("UTF-8");
 	    messageSource.setBasename("messages");
 	    return messageSource;
-	}*/
+	}
 }
 

@@ -1,6 +1,13 @@
 package by.netcracker.pojo;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -17,6 +24,7 @@ public class Student implements  Serializable{
     @Column(name = "F_ID")
     private Integer id;
 
+    @Size(min = 3, max = 70)
     @Column(name = "F_FIO")
     private String fio;
 
@@ -24,23 +32,30 @@ public class Student implements  Serializable{
     @JoinColumn(name = "F_GROUP_ID")
     private Group group;
 
+    @NotEmpty
     @Column(name = "F_TYPE_STIPEND")
-    private String type_stipend;
+    private String typeStipend;
+
+    @NotNull
+    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @Column(name = "F_JOIN_DATE", nullable = false)
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate joinDate;
 
     public Student() {
     }
 
-    public Student(Integer id, String fio, Group group, String type_stipend) {
+    public Student(Integer id, String fio, Group group, String typeStipend) {
         this.id=id;
         this.fio=fio;
         this.group=group;
-        this.type_stipend=type_stipend;
+        this.typeStipend=typeStipend;
     }
 
     public Student(String fio, Group group, String type_stipend) {
         this.fio=fio;
         this.group=group;
-        this.type_stipend=type_stipend;
+        this.typeStipend=type_stipend;
     }
 
     public Integer getId() {
@@ -67,12 +82,20 @@ public class Student implements  Serializable{
         this.group = group;
     }
 
-    public String getType_stipend() {
-        return type_stipend;
+    public String getTypeStipend() {
+        return typeStipend;
     }
 
-    public void setType_stipend(String type_stipend) {
-        this.type_stipend = type_stipend;
+    public void setTypeStipend(String typeStipend) {
+        this.typeStipend = typeStipend;
+    }
+
+    public LocalDate getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(LocalDate joinDate) {
+        this.joinDate = joinDate;
     }
 
     @Override
@@ -84,8 +107,8 @@ public class Student implements  Serializable{
 
         if (fio != null ? !fio.equals(student.fio) : student.fio != null) return false;
         if (id != null ? !id.equals(student.id) : student.id != null) return false;
-        if (type_stipend != null ? !type_stipend.equals(student.type_stipend) : student.type_stipend != null)
-            return false;
+        if (joinDate != null ? !joinDate.equals(student.joinDate) : student.joinDate != null) return false;
+        if (typeStipend != null ? !typeStipend.equals(student.typeStipend) : student.typeStipend != null) return false;
 
         return true;
     }
@@ -94,7 +117,8 @@ public class Student implements  Serializable{
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (fio != null ? fio.hashCode() : 0);
-        result = 31 * result + (type_stipend != null ? type_stipend.hashCode() : 0);
+        result = 31 * result + (typeStipend != null ? typeStipend.hashCode() : 0);
+        result = 31 * result + (joinDate != null ? joinDate.hashCode() : 0);
         return result;
     }
 
@@ -104,7 +128,8 @@ public class Student implements  Serializable{
                 "id=" + id +
                 ", fio='" + fio + '\'' +
                 ", group=" + group +
-                ", type_stipend='" + type_stipend + '\'' +
+                ", typeStipend='" + typeStipend + '\'' +
+                ", joinDate=" + joinDate +
                 '}';
     }
 }

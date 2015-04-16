@@ -15,6 +15,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
@@ -63,11 +64,13 @@ public class AppController {
 	 * saving employee in database. It also validates the user input
 	 */
 	@RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-	public String saveEmployee(@ModelAttribute("student") Student student, Model model, BindingResult result) {
+	public String saveEmployee(@Valid Student student, BindingResult result, Model model) {
 	//Student student=null;
-		/*if (result.hasErrors()) {
+		if (result.hasErrors()) {
+			List<Group> groups=serv.getAllGroup();
+			model.addAttribute("groups", groups);
 			return "registration";
-		}*/
+		}
 
 		serv.saveStudent(student);
 

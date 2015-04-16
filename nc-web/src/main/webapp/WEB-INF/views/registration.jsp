@@ -8,28 +8,42 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+<head>
+  <style>
+    .error {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
 <div class="wraper">
   <div>
     <h2>Регистрация студента</h2>
-    <form:form method="POST" modelAttribute="student" action="/netcracker/new">
+    <form:form method="POST" modelAttribute="student">
       <table>
         <tr>
           <td><label for="fio">ФИО: </label></td>
-          <td><form:input path="fio"/></td>
+          <td><form:input path="fio" id="fio"/></td>
+          <td><form:errors path="fio" cssClass="error"/></td>
         </tr>
         <tr>
           <td><label >Группа: </label></td>
           <td><form:select path="group" >
-            <%--<c:forEach var="groupList" items="${groups}">
-              <form:option value="${groupList}">${groupList.facult}</form:option>
-            </c:forEach>--%>
             <form:options  items="${groups}" itemValue="id" itemLabel="facult"/>
             <form:option label="Без факультета" value="${null}"/>
           </form:select></td>
         </tr>
         <tr>
-          <td><label for="type_stipend">Тип стипендии: </label></td>
-          <td><form:input path="type_stipend"/></td>
+          <td><label for="typeStipend">Тип стипендии: </label></td>
+          <td><form:input path="typeStipend" id="typeStipend"/></td>
+          <td><form:errors path="typeStipend" cssClass="error"/></td>
+        </tr>
+        <tr>
+          <td><label for="joinDate">Дата зачисления: </label></td>
+          <td><form:input path="joinDate" id="joinDate"/></td>
+          <td><form:errors path="joinDate" cssClass="error"/></td>
         </tr>
         <tr>
           <td colspan="3"><input type="submit" value="Register"/></td>
@@ -38,3 +52,5 @@
     </form:form>
   </div>
 </div>
+</body>
+</html>
