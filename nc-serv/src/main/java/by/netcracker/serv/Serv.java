@@ -18,6 +18,10 @@ public interface Serv {
 
     public Boolean saveStudent(Student student);
 
+    public Student getStudentById(Integer id);
+
     public Group getGroupById(Integer id);
+
+    public Boolean updateStudent(Student student);
 
 }

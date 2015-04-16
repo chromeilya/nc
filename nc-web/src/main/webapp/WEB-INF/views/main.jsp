@@ -13,7 +13,7 @@
     <div>
       <table>
         <tr>
-          <td>ФИО</td><td>Номер группы</td><td>Факультет</td><td>Стипендия</td><td>Дата зачисления</td><td>Удалить</td>
+          <td>ФИО</td><td>Номер группы</td><td>Факультет</td><td>Стипендия</td><td>Дата зачисления</td><td>Редактировать</td><td>Удалить</td>
         </tr>
        <c:forEach items="${students}" var="student">
         <tr>
@@ -22,6 +22,7 @@
           <td>${student.group.facult}</td>
           <td>${student.typeStipend}</td>
           <td>${student.joinDate}</td>
+          <td><a href="<c:url value='/edit-${student.id}-student' />">Редактировать</a></td>
           <td><a href="<c:url value='/delete-${student.id}-student' />">Удалить</a></td>
         </tr>
        </c:forEach>

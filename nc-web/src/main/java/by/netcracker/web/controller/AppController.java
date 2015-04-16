@@ -28,7 +28,7 @@ public class AppController {
 	 * This method will list all existing employees.
 	 */
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
-	public String listEmployees(ModelMap model) {
+	public String listStudents(ModelMap model) {
 
 		List<Student> students = serv.getAllStudent();
 		model.addAttribute("students", students);
@@ -39,7 +39,7 @@ public class AppController {
 	 * This method will delete an employee by it's SSN value.
 	 */
 	@RequestMapping(value = { "/delete-{id}-student" }, method = RequestMethod.GET)
-	public String deleteEmployee(@PathVariable String id) {
+	public String deleteStudents(@PathVariable String id) {
 		Integer idd=Integer.parseInt(id);
 		serv.deleteStudentById(idd);
 		return "redirect:/list";
@@ -64,7 +64,7 @@ public class AppController {
 	 * saving employee in database. It also validates the user input
 	 */
 	@RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-	public String saveEmployee(@Valid Student student, BindingResult result, Model model) {
+	public String saveStudent(@Valid Student student, BindingResult result, Model model) {
 	//Student student=null;
 		if (result.hasErrors()) {
 			List<Group> groups=serv.getAllGroup();
@@ -73,6 +73,33 @@ public class AppController {
 		}
 
 		serv.saveStudent(student);
+
+		/*model.addAttribute("success", "Employee " + employee.getName()
+				+ " registered successfully");*/
+		return "redirect:/list";
+	}
+
+
+	@RequestMapping(value = { "/edit-{id}-student" }, method = RequestMethod.GET)
+	public String editStudent(@PathVariable String id, Model model) {
+		Integer idd=Integer.parseInt(id);
+		Student student=serv.getStudentById(idd);
+		List<Group> groups=serv.getAllGroup();
+		model.addAttribute("student", student);
+		model.addAttribute("groups", groups);
+		return "edit";
+	}
+
+
+	@RequestMapping(value = { "/edit-{id}-student" }, method = RequestMethod.POST)
+	public String updateStudent(@Valid Student student, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			List<Group> groups=serv.getAllGroup();
+			model.addAttribute("groups", groups);
+			return "edit";
+		}
+
+		serv.updateStudent(student);
 
 		/*model.addAttribute("success", "Employee " + employee.getName()
 				+ " registered successfully");*/

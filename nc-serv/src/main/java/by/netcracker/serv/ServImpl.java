@@ -73,7 +73,18 @@ public class ServImpl implements Serv {
         }
 
         return false;
-    };
+    }
+
+    @Override
+    public Student getStudentById(Integer id){
+        Student student=null;
+        try {
+            student=studentDao.get(id);
+        }catch (DaoException e){
+            e.printStackTrace();
+        }
+       return student;
+    }
 
     @Override
     public Group getGroupById(Integer id){
@@ -85,7 +96,18 @@ public class ServImpl implements Serv {
             e.printStackTrace();
         }
         return group;
-    };
+    }
+
+    @Override
+    public Boolean updateStudent(Student student){
+        try {
+            studentDao.update(student);
+            return true;
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 
 }
