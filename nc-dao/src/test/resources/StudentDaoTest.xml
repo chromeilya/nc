@@ -2,8 +2,8 @@
 <dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../../../dbxsd/dataset.xsd">
 
-	<T_STUDENT F_ID="1" F_FIO="fio1" F_GROUP_ID="1" F_TYPE_STIPEND="type1"/>
-	<T_STUDENT F_ID="2" F_FIO="fio2" F_GROUP_ID="2" F_TYPE_STIPEND="type2"/>
+	<T_STUDENT F_ID="1" F_FIO="fio1" F_GROUP_ID="1" F_TYPE_STIPEND="type1" F_JOIN_DATE="2012-11-21"/>
+	<T_STUDENT F_ID="2" F_FIO="fio2" F_GROUP_ID="2" F_TYPE_STIPEND="type2" F_JOIN_DATE="2014-12-29"/>
 
 	<T_GROUP F_ID="1" F_NUM="111" F_FACULT="facult1"/>
 	<T_GROUP F_ID="2" F_NUM="222" F_FACULT="facult2"/>

@@ -15,6 +15,7 @@
 		<xsd:attribute name="F_FIO" use="optional" />
 		<xsd:attribute name="F_ID" use="optional" />
 		<xsd:attribute name="F_GROUP_ID" use="optional" />
+		<xsd:attribute name="F_JOIN_DATE" use="optional" />
 		<xsd:attribute name="F_TYPE_STIPEND" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="T_GROUP__type">
