@@ -37,7 +37,7 @@ public class Student implements  Serializable{
     private String typeStipend;
 
     @NotNull
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "F_JOIN_DATE", nullable = false)
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joinDate;
