@@ -27,12 +27,4 @@ public interface Serv {
 
     public List<Student> findStudents(String param) throws ServException;
 
-    public List<Group> getAllGroup();
-
-    public Boolean deleteStudentById(Integer id);
-
-    public Boolean saveStudent(Student student);
-
-    public Group getGroupById(Integer id);
-
 }
