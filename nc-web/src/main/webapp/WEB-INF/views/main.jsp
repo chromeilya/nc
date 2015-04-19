@@ -9,11 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="wraper">
   <div>
-    <h2>Список студентов</h2>
+    <h2>Student list</h2>
     <div>
       <table>
         <tr>
-          <td>ФИО</td><td>Номер группы</td><td>Факультет</td><td>Стипендия</td><td>Дата зачисления</td><td>Редактировать</td><td>Удалить</td>
+          <td>FIO</td><td>№ group</td><td>Facultet</td><td>Stipend</td><td>Joining date</td><td>Edit</td><td>Delete</td>
         </tr>
        <c:forEach items="${students}" var="student">
         <tr>
@@ -22,8 +22,8 @@
           <td>${student.group.facult}</td>
           <td>${student.typeStipend}</td>
           <td>${student.joinDate}</td>
-          <td><a href="<c:url value='/edit-${student.id}-student' />">Редактировать</a></td>
-          <td><a href="<c:url value='/delete-${student.id}-student' />">Удалить</a></td>
+          <td><a href="<c:url value='/edit-${student.id}-student' />">edit</a></td>
+          <td><a href="<c:url value='/delete-${student.id}-student' />">delete</a></td>
         </tr>
        </c:forEach>
       </table>

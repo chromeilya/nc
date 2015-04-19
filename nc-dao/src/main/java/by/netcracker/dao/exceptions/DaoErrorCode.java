@@ -6,7 +6,7 @@ package by.netcracker.dao.exceptions;
 public enum DaoErrorCode {
 
     NC_DAO_000("Cannot get by id"),
-    NC_DAO_001("Cannot get list of"),
+    NC_DAO_001("Cannot get list of object"),
     NC_DAO_002("Cannot add object"),
     NC_DAO_003("Cannot update object"),
     NC_DAO_004("Cannot delete object"),
