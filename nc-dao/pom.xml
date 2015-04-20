@@ -82,9 +82,9 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <url>jdbc:mysql://localhost:3306/NC?characterEncoding=UTF-8</url>
+                    <url>jdbc:mysql://mysql21029-chromeilya.mycloud.by/NC</url>
                     <user>root</user>
-                    <password>1234</password>
+                    <password>GBmnq7tTg7</password>
                     <locations>
                         <location>filesystem:DB/migration</location>
                     </locations>
