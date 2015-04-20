@@ -4,6 +4,7 @@ import by.netcracker.pojo.Group;
 import by.netcracker.pojo.Student;
 import by.netcracker.serv.exceptions.ServException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by ilya on 4/20/15.
  */
+@Component
 @Service("facadeService")
 @Transactional
 public class FacadeServiceImpl implements FacadeService{
@@ -21,6 +23,9 @@ public class FacadeServiceImpl implements FacadeService{
 
     @Autowired
     GroupService groupService;
+
+    public FacadeServiceImpl() {
+    }
 
     @Override
     public List<Student> getAllStudent() throws ServException {

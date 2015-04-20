@@ -25,9 +25,8 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private Dao<Student, Integer> studentDao;
 
-    @Autowired
-    private Dao<Group, Integer> groupDao;
-
+    StudentServiceImpl(){
+    }
 
     @Override
     public List<Student> getAllStudent() throws ServException {

@@ -23,10 +23,10 @@ public class GroupServiceImpl implements GroupService {
     private static Logger log = Logger.getLogger(GroupServiceImpl.class);
 
     @Autowired
-    private Dao<Student, Integer> studentDao;
-
-    @Autowired
     private Dao<Group, Integer> groupDao;
+
+    public GroupServiceImpl() {
+    }
 
     @Override
     public List<Group> getAllGroup() throws ServException {

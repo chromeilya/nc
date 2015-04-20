@@ -180,7 +180,7 @@ public class AppController {
 		model.addAttribute("students", students);
 		return "main";
 	}
-	
+
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
 		binder.registerCustomEditor(Group.class, "group", new PropertyEditorSupport() {
