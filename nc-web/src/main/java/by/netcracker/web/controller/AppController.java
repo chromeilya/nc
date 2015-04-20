@@ -21,6 +21,10 @@ import javax.validation.Valid;
 import java.beans.PropertyEditorSupport;
 import java.util.List;
 
+/**
+ *
+ */
+
 @Controller
 @RequestMapping("/")
 public class AppController {
@@ -29,11 +33,14 @@ public class AppController {
     @Autowired
     FacadeService facadeService;
 
-    /*
-     * This method will list all existing employees.
+    /**
+     * This method will get all students.
+     * @param model Spring Model for work with form attribute.
+     * @return "main" page
+     * @throws WebException catch ServException
      */
     @RequestMapping(value = {"/", "/list"}, method = RequestMethod.GET)
-    public String listStudents(ModelMap model) throws Exception {
+    public String listStudents(Model model) throws WebException {
 
         List<Student> students;
         try {
@@ -47,9 +54,13 @@ public class AppController {
         return "main";
     }
 
-    /*
- * This method will delete an employee by it's SSN value.
- */
+    /**
+     * This method will delete student by id.
+     * @param id Get student id.
+     * @param redirectAttributes attribute for input success response.
+     * @return "redirect:/list" to main page
+     * @throws WebException catch ServException
+     */
     @RequestMapping(value = {"/delete-{id}-student"}, method = RequestMethod.GET)
     public String deleteStudents(@PathVariable String id, final RedirectAttributes redirectAttributes) throws WebException {
         Integer idd = Integer.parseInt(id);
@@ -68,8 +79,11 @@ public class AppController {
     }
 
 
-    /*
-     * This method will provide the medium to add a new employee.
+    /**
+     * This method will provide the medium to add a new student.
+     * @param model Spring Model for work with form attribute.
+     * @return "registration" page
+     * @throws WebException catch ServException
      */
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String newStudent(Model model) throws WebException {
@@ -87,9 +101,14 @@ public class AppController {
         return "registration";
     }
 
-    /*
-     * This method will be called on form submission, handling POST request for
-     * saving employee in database. It also validates the user input
+    /**
+     * 
+     * @param student
+     * @param result
+     * @param model
+     * @param redirectAttributes
+     * @return
+     * @throws WebException
      */
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
     public String saveStudent(@Valid Student student, BindingResult result, Model model, final RedirectAttributes redirectAttributes) throws WebException {
