@@ -7,13 +7,11 @@ import by.netcracker.serv.exceptions.ServException;
 import java.util.List;
 
 /**
- * Created by ilya on 4/13/15.
+ * Created by ilya on 4/20/15.
  */
-public interface Serv {
+public interface FacadeService {
 
     public List<Student> getAllStudent() throws ServException;
-
-    public List<Group> getAllGroup() throws ServException;
 
     public Boolean deleteStudentById(Integer id) throws ServException;
 
@@ -21,10 +19,11 @@ public interface Serv {
 
     public Student getStudentById(Integer id) throws ServException;
 
-    public Group getGroupById(Integer id) throws ServException;
-
     public Boolean updateStudent(Student student) throws ServException;
 
     public List<Student> findStudents(String param) throws ServException;
 
+    public List<Group> getAllGroup() throws ServException;
+
+    public Group getGroupById(Integer id) throws ServException;
 }

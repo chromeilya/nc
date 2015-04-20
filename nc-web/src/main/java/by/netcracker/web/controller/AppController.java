@@ -5,7 +5,8 @@ import java.util.List;
 
 import by.netcracker.pojo.Group;
 import by.netcracker.pojo.Student;
-import by.netcracker.serv.Serv;
+import by.netcracker.serv.FacadeService;
+import by.netcracker.serv.StudentService;
 import by.netcracker.serv.exceptions.ServException;
 import by.netcracker.web.exceptions.WebErrorCode;
 import by.netcracker.web.exceptions.WebException;
@@ -27,7 +28,7 @@ public class AppController {
 	private static Logger log = Logger.getLogger(AppController.class);
 
 	@Autowired
-	Serv serv;
+	FacadeService facadeService;
 
 	/*
 	 * This method will list all existing employees.
@@ -37,7 +38,7 @@ public class AppController {
 
 		List<Student> students;
 		try {
-			students = serv.getAllStudent();
+			students = facadeService.getAllStudent();
 		} catch (ServException e) {
 			log.info("Cannot get list students");
 			throw new WebException(e, WebErrorCode.NC_WEB_000);
@@ -54,7 +55,7 @@ public class AppController {
 	public String deleteStudents(@PathVariable String id) throws WebException {
 		Integer idd=Integer.parseInt(id);
 		try {
-			serv.deleteStudentById(idd);
+			facadeService.deleteStudentById(idd);
 		} catch (ServException e) {
 			log.info("Cannot delete student with id:"+id);
 			throw new WebException(e, WebErrorCode.NC_WEB_001);
@@ -72,7 +73,7 @@ public class AppController {
 		Student student=new Student();
 		List<Group> groups= null;
 		try {
-			groups = serv.getAllGroup();
+			groups = facadeService.getAllGroup();
 		} catch (ServException e) {
 			log.info("Cannot get all groups");
 			throw new WebException(e, WebErrorCode.NC_WEB_002);
@@ -93,7 +94,7 @@ public class AppController {
 		if (result.hasErrors()) {
 			List<Group> groups= null;
 			try {
-				groups = serv.getAllGroup();
+				groups = facadeService.getAllGroup();
 			} catch (ServException e) {
 				log.info("Cannot get all groups");
 				throw new WebException(e, WebErrorCode.NC_WEB_002);
@@ -104,7 +105,7 @@ public class AppController {
 		}
 
 		try {
-			serv.saveStudent(student);
+			facadeService.saveStudent(student);
 		} catch (ServException e) {
 			throw new WebException(e, WebErrorCode.NC_WEB_003);
 		}
@@ -122,8 +123,8 @@ public class AppController {
 		Student student= null;
 		List<Group> groups= null;
 		try {
-			student = serv.getStudentById(idd);
-			groups = serv.getAllGroup();
+			student = facadeService.getStudentById(idd);
+			groups = facadeService.getAllGroup();
 		} catch (ServException e) {
 			log.info("Cannot edit student");
 			throw new WebException(e, WebErrorCode.NC_WEB_004);
@@ -140,7 +141,7 @@ public class AppController {
 		if (result.hasErrors()) {
 			List<Group> groups;
 			try {
-				groups = serv.getAllGroup();
+				groups = facadeService.getAllGroup();
 			} catch (ServException e) {
 				log.info("Cannot get all groups");
 				throw new WebException(e, WebErrorCode.NC_WEB_004);
@@ -150,7 +151,7 @@ public class AppController {
 		}
 
 		try {
-			serv.updateStudent(student);
+			facadeService.updateStudent(student);
 		} catch (ServException e) {
 			log.info("Cannot update student");
 			throw new WebException(e, WebErrorCode.NC_WEB_005);
@@ -166,7 +167,7 @@ public class AppController {
 	public String findStudent(@RequestParam("search") String search, Model model) throws WebException {
 		List<Student> students;
 		try {
-			students = serv.findStudents(search);
+			students = facadeService.findStudents(search);
 			if (students.size()==0) {
 				log.info("Cannot find students");
 				throw new WebException(WebErrorCode.NC_WEB_006);
@@ -179,10 +180,7 @@ public class AppController {
 		model.addAttribute("students", students);
 		return "main";
 	}
-
-
-
-
+	
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
 		binder.registerCustomEditor(Group.class, "group", new PropertyEditorSupport() {
@@ -192,7 +190,7 @@ public class AppController {
 					Integer id = Integer.parseInt(text);
 					Group group= null;
 					try {
-						group = serv.getGroupById(id);
+						group = facadeService.getGroupById(id);
 					} catch (ServException e) {
 						log.info("Cannot get all groups");
 						e.printStackTrace();
@@ -206,8 +204,5 @@ public class AppController {
 			}
 		});
 	}
-
-
-
 
 }

@@ -12,16 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by ilya on 4/13/15.
  */
-@Service("serv")
+@Service("studentService")
 @Transactional
-public class ServImpl implements Serv {
-    private static Logger log = Logger.getLogger(ServImpl.class);
+public class StudentServiceImpl implements StudentService {
+    private static Logger log = Logger.getLogger(StudentServiceImpl.class);
 
     @Autowired
     private Dao<Student, Integer> studentDao;
@@ -41,18 +40,6 @@ public class ServImpl implements Serv {
         }
         return students;
     }
-
-    @Override
-    public List<Group> getAllGroup() throws ServException{
-      List<Group> groups;
-        try {
-            groups=groupDao.getAll();
-            log.info("Getting all groups:"+groups);
-        } catch (DaoException e) {
-            throw new ServException(e, ServErrorCode.NC_SERV_001);
-        }
-        return groups;
-    };
 
     @Override
     public Boolean deleteStudentById(Integer id) throws ServException{
@@ -92,18 +79,6 @@ public class ServImpl implements Serv {
     }
 
     @Override
-    public Group getGroupById(Integer id) throws ServException{
-      Group group;
-        try {
-            group=groupDao.get(id);
-            log.info("Getting group:"+group);
-        }catch (DaoException e){
-            throw new ServException(e, ServErrorCode.NC_SERV_005);
-        }
-        return group;
-    }
-
-    @Override
     public Boolean updateStudent(Student student) throws ServException{
         try {
             studentDao.update(student);
@@ -127,7 +102,6 @@ public class ServImpl implements Serv {
         } catch (DaoException e) {
             throw new ServException(e, ServErrorCode.NC_SERV_007);
         }
-
         return students;
     }
 

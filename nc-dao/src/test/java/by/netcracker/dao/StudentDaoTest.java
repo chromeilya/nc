@@ -6,7 +6,10 @@ import by.netcracker.dao.configuration.HibernateConfiguration;
 import by.netcracker.dao.exceptions.DaoException;
 import by.netcracker.pojo.Group;
 import by.netcracker.pojo.Student;
+import org.hibernate.Query;
+import org.joda.time.LocalDate;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,6 +20,7 @@ import org.unitils.spring.annotation.SpringApplicationContext;
 import org.unitils.spring.annotation.SpringBeanByName;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -25,7 +29,7 @@ import static org.junit.Assert.*;
  * Created by ilya on 4/8/15.
  */
 @DataSet
-//@Transactional
+@Transactional
 public class StudentDaoTest extends UnitilsJUnit4 {
 
     @SpringApplicationContext
@@ -41,7 +45,6 @@ public class StudentDaoTest extends UnitilsJUnit4 {
     private Group group1;
     private Group group2;
 
-
     private Student student1;
     private Student student2;
     private Student student3;
@@ -49,9 +52,11 @@ public class StudentDaoTest extends UnitilsJUnit4 {
 
     @Before
     public void initParam(){
+
         Integer idGroup1 = 1;
         Integer group_num1=111;
         String facult1="facult1";
+
         Integer idGroup2 = 2;
         Integer group_num2 = 222;
         String facult2 = "facult2";
@@ -60,17 +65,26 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         group2=new Group(idGroup2, group_num2, facult2);
 
         Integer id1 = 1;
-        Integer id2 = 2;
         String fio1 = "fio1";
-        String fio2 = "fio2";
-        String fio3 = "fio3";
         String type_stipend1 = "type1";
-        String type_stipend2 = "type2";
-        String type_stipend3 = "type3";
+        LocalDate joinDate1 = LocalDate.parse("2012-11-21");
 
-        student1=new Student(id1, fio1, group1, type_stipend1);
-        student2=new Student(id2, fio2, group2, type_stipend2);
-        student3=new Student(fio3, group2, type_stipend3);
+
+        Integer id2 = 2;
+        String fio2 = "fio2";
+        String type_stipend2 = "type2";
+        LocalDate joinDate2 = LocalDate.parse("2012-11-22");
+
+
+        Integer id3 = 3;
+        String fio3 = "fio3";
+        String type_stipend3 = "type3";
+        LocalDate joinDate3 = LocalDate.parse("2012-11-23");
+
+
+        student1=new Student(id1, fio1, group1, type_stipend1, joinDate1);
+        student2=new Student(id2, fio2, group2, type_stipend2, joinDate2);
+        student3=new Student(fio3, group2, type_stipend3, joinDate3);
     }
 
     @Test
@@ -81,8 +95,9 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         } catch (DaoException e) {
             e.printStackTrace();
         }
+        List<Student> studentTest= Arrays.asList(student1, student2);
         assertNotNull(students);
-        assertEquals(students.size(), 2);
+        assertEquals(students.size(), studentTest.size());
     }
 
     @Test
@@ -93,6 +108,7 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         } catch (DaoException e) {
             e.printStackTrace();
         }
+        assertNotNull(studentResult);
         assertEquals(student1, studentResult);
     }
 
@@ -104,7 +120,6 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         } catch (DaoException e) {
             e.printStackTrace();
         }
-        //assertEquals(studentIdResult, studentId3);
         assertNotNull(studentIdResult);
     }
 
@@ -124,7 +139,7 @@ public class StudentDaoTest extends UnitilsJUnit4 {
 
     @Test
     public void deleteStudent() throws DaoException{
-        Student studentResult=student1;
+        Student studentResult=student2;
         try {
             studentDao.delete(student2);
             studentResult=studentDao.get(student2.getId());
@@ -132,5 +147,22 @@ public class StudentDaoTest extends UnitilsJUnit4 {
             e.printStackTrace();
         }
         assertNull(studentResult);
+    }
+
+    @Test
+    public void findStudent() throws DaoException{
+        String param="%io%";
+        List<Student> students = null;
+        try{
+            Query query=studentDao.getQuery("from Student stud where stud.fio like  :param " +
+                    "or stud.group.facult like :param");
+            query.setParameter("param", param);
+            students=query.list();
+        }catch (DaoException e){
+            e.printStackTrace();
+        }
+        List<Student> studentTest= Arrays.asList(student1, student2);
+        assertNotNull(students);
+        assertEquals(students.size(),studentTest.size());
     }
 }
