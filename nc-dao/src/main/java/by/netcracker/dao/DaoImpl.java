@@ -26,10 +26,6 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
 
     private Class<T> type;
 
-    protected Session getSession() {
-        return sessionFactory.getCurrentSession();
-    }
-
     public DaoImpl(Class<T> type) {
         this.type = type;
     }
@@ -37,24 +33,28 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     public DaoImpl() {
     }
 
+    protected Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
     @Override
     public T get(PK id) throws DaoException {
-        try{
+        try {
             log.info("Getting object with id: " + id);
             T entity = (T) getSession().get(type, id);
             return entity;
-        }catch(HibernateException e){
+        } catch (HibernateException e) {
             throw new DaoException(e, DaoErrorCode.NC_DAO_000);
         }
     }
 
     @Override
     public List getAll() throws DaoException {
-        try{
+        try {
             log.info("Getting list of object");
             List<T> list = getSession().createCriteria(type).list();
             return list;
-        }catch(HibernateException e){
+        } catch (HibernateException e) {
             throw new DaoException(e, DaoErrorCode.NC_DAO_001);
         }
     }

@@ -1,6 +1,5 @@
 package by.netcracker.serv;
 
-import by.netcracker.pojo.Group;
 import by.netcracker.pojo.Student;
 import by.netcracker.serv.exceptions.ServException;
 

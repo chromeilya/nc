@@ -10,7 +10,7 @@ import org.hibernate.Query;
 import java.io.Serializable;
 import java.util.List;
 
-public interface Dao<T, PK extends Serializable>  {
+public interface Dao<T, PK extends Serializable> {
 
     T get(PK id) throws DaoException;
 

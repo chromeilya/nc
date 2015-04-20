@@ -13,16 +13,16 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@ComponentScan({ "by.netcracker.dao"})
+@ComponentScan({"by.netcracker.dao"})
 public class DaoBeans {
 
-    @Bean(name="studentDao")
-    public Dao<Student, Integer> studentDao(){
+    @Bean(name = "studentDao")
+    public Dao<Student, Integer> studentDao() {
         return new DaoImpl<Student, Integer>(Student.class);
     }
 
-    @Bean(name="groupDao")
-    public Dao<Group, Integer> groupDao(){
+    @Bean(name = "groupDao")
+    public Dao<Group, Integer> groupDao() {
         return new DaoImpl<Group, Integer>(Group.class);
     }
 

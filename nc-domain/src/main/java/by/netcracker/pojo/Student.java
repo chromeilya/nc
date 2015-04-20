@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "T_STUDENT")
-public class Student implements  Serializable{
+public class Student implements Serializable {
 
     private static final Long serialVersionUID = 25463461234L;
 
@@ -37,27 +37,27 @@ public class Student implements  Serializable{
     private String typeStipend;
 
     @NotNull
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "F_JOIN_DATE", nullable = false)
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joinDate;
 
     public Student() {
     }
 
     public Student(Integer id, String fio, Group group, String typeStipend, LocalDate joinDate) {
-        this.id=id;
-        this.fio=fio;
-        this.group=group;
-        this.typeStipend=typeStipend;
-        this.joinDate=joinDate;
+        this.id = id;
+        this.fio = fio;
+        this.group = group;
+        this.typeStipend = typeStipend;
+        this.joinDate = joinDate;
     }
 
     public Student(String fio, Group group, String type_stipend, LocalDate joinDate) {
-        this.fio=fio;
-        this.group=group;
-        this.typeStipend=type_stipend;
-        this.joinDate=joinDate;
+        this.fio = fio;
+        this.group = group;
+        this.typeStipend = type_stipend;
+        this.joinDate = joinDate;
     }
 
     public Integer getId() {

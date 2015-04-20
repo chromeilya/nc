@@ -1,7 +1,5 @@
 package by.netcracker.web.exceptions;
 
-import by.netcracker.serv.exceptions.ServErrorCode;
-
 /**
  * Created by ilya on 4/8/15.
  */

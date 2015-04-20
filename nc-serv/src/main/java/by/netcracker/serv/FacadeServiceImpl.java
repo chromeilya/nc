@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 @Service("facadeService")
 @Transactional
-public class FacadeServiceImpl implements FacadeService{
+public class FacadeServiceImpl implements FacadeService {
 
     @Autowired
     StudentService studentService;

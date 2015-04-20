@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "T_GROUP")
-public class Group implements Serializable{
+public class Group implements Serializable {
 
     private static final Long serialVersionUID = 143654621345L;
 
@@ -27,14 +27,14 @@ public class Group implements Serializable{
     }
 
     public Group(Integer id, Integer group_num, String facult) {
-        this.id=id;
-        this.group_num=group_num;
-        this.facult=facult;
+        this.id = id;
+        this.group_num = group_num;
+        this.facult = facult;
     }
 
     public Group(Integer group_num, String facult) {
-        this.group_num=group_num;
-        this.facult=facult;
+        this.group_num = group_num;
+        this.facult = facult;
     }
 
     public Integer getId() {

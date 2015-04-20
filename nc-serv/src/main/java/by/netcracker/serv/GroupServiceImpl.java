@@ -3,7 +3,6 @@ package by.netcracker.serv;
 import by.netcracker.dao.Dao;
 import by.netcracker.dao.exceptions.DaoException;
 import by.netcracker.pojo.Group;
-import by.netcracker.pojo.Student;
 import by.netcracker.serv.exceptions.ServErrorCode;
 import by.netcracker.serv.exceptions.ServException;
 import org.apache.log4j.Logger;
@@ -32,8 +31,8 @@ public class GroupServiceImpl implements GroupService {
     public List<Group> getAllGroup() throws ServException {
         List<Group> groups;
         try {
-            groups=groupDao.getAll();
-            log.info("Getting all groups:"+groups);
+            groups = groupDao.getAll();
+            log.info("Getting all groups:" + groups);
         } catch (DaoException e) {
             throw new ServException(e, ServErrorCode.NC_SERV_001);
         }
@@ -41,12 +40,12 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group getGroupById(Integer id) throws ServException{
+    public Group getGroupById(Integer id) throws ServException {
         Group group;
         try {
-            group=groupDao.get(id);
-            log.info("Getting group:"+group);
-        }catch (DaoException e){
+            group = groupDao.get(id);
+            log.info("Getting group:" + group);
+        } catch (DaoException e) {
             throw new ServException(e, ServErrorCode.NC_SERV_005);
         }
         return group;
