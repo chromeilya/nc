@@ -197,6 +197,18 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.3</version>
+                    <configuration>
+                        <aggregate>true</aggregate>
+                        <reportOutputDirectory>JavaDoc</reportOutputDirectory>
+                        <destDir>nc</destDir>
+                    </configuration>
+                </plugin>
+            </plugins>
     </build>
 
 
