@@ -10,8 +10,20 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+/**
+ * This is class initialize spring dispatcher
+ * servlet in web aplication.
+ * @author Hromenkov Ilya
+ * @version 1.0
+ */
+
 public class AppInitializer implements WebApplicationInitializer {
 
+    /**
+     * Initialize servlet when application on startup.
+     * @param container Get ServletContext.
+     * @throws ServletException push ServletException in up.
+     */
     @Override
     public void onStartup(ServletContext container) throws ServletException {
 

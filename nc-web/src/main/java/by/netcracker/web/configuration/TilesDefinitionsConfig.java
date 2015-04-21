@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by ilya on 4/13/15.
+ * Configure tiles definitions on application.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public class TilesDefinitionsConfig implements DefinitionsFactory {
 
@@ -36,7 +38,7 @@ public class TilesDefinitionsConfig implements DefinitionsFactory {
     }
 
     /**
-     * <code>Add Apache tiles definitions</code>
+     * Add Apache tiles definitions
      */
     public static void addDefinitions() {
         addDefaultLayoutDef("main", "Main", "/WEB-INF/views/main.jsp");

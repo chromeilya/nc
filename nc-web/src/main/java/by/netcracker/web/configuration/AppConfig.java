@@ -10,23 +10,21 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+/**
+ * This is class configure srping context in web mvc project.
+ * @author Hromenkov Ilya
+ * @version 1.0
+ */
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "by.netcracker")
 public class AppConfig {
 
-/*	@Bean
-	public ViewResolver viewResolver() {
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/views/");
-		viewResolver.setSuffix(".jsp");
-
-		return viewResolver;
-	}*/
-
     /**
-     * <code>Resolves views selected for rendering by @Controllers to tiles resources in the Apache TilesConfigurer bean</code>
+     * Resolves views selected for rendering by @Controllers to tiles resources
+     * in the Apache TilesConfigurer bean
+     * @return TilesViewResolver.
      */
     @Bean
     public TilesViewResolver getTilesViewResolver() {
@@ -35,9 +33,10 @@ public class AppConfig {
         return tilesViewResolver;
     }
 
-
     /**
-     * <code>Configures Apache tiles definitions bean used by Apache TilesViewResolver to resolve views selected for rendering by @Controllers</code>
+     * Configures Apache tiles definitions bean used by Apache TilesViewResolver
+     * to resolve views selected for rendering by @Controllers
+     * @return TilesConfigurer.
      */
     @Bean
     public TilesConfigurer getTilesConfigurer() {
@@ -51,6 +50,10 @@ public class AppConfig {
         return tilesConfigurer;
     }
 
+    /**
+     * ResourceBundle for validation message.
+     * @return ResourceBundleMessageSource.
+     */
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();

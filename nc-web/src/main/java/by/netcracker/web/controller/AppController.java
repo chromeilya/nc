@@ -22,7 +22,10 @@ import java.beans.PropertyEditorSupport;
 import java.util.List;
 
 /**
- *
+ * This is general controller. It is get request
+ * and send response to user.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 
 @Controller
@@ -36,8 +39,8 @@ public class AppController {
     /**
      * This method will get all students.
      * @param model Spring Model for work with form attribute.
-     * @return "main" page
-     * @throws WebException catch ServException
+     * @return "main" page.
+     * @throws WebException catch ServException.
      */
     @RequestMapping(value = {"/", "/list"}, method = RequestMethod.GET)
     public String listStudents(Model model) throws WebException {
@@ -58,11 +61,12 @@ public class AppController {
      * This method will delete student by id.
      * @param id Get student id.
      * @param redirectAttributes attribute for input success response.
-     * @return "redirect:/list" to main page
-     * @throws WebException catch ServException
+     * @return "redirect:/list" to main page.
+     * @throws WebException catch ServException.
      */
     @RequestMapping(value = {"/delete-{id}-student"}, method = RequestMethod.GET)
-    public String deleteStudents(@PathVariable String id, final RedirectAttributes redirectAttributes) throws WebException {
+    public String deleteStudents(@PathVariable String id,
+                                 final RedirectAttributes redirectAttributes) throws WebException {
         Integer idd = Integer.parseInt(id);
         Student student;
         try {
@@ -82,8 +86,8 @@ public class AppController {
     /**
      * This method will provide the medium to add a new student.
      * @param model Spring Model for work with form attribute.
-     * @return "registration" page
-     * @throws WebException catch ServException
+     * @return "registration" page.
+     * @throws WebException catch ServException.
      */
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String newStudent(Model model) throws WebException {
@@ -102,17 +106,17 @@ public class AppController {
     }
 
     /**
-     * 
-     * @param student
-     * @param result
-     * @param model
-     * @param redirectAttributes
-     * @return
-     * @throws WebException
+     *This method create new student. Check validation field on student pojo.
+     * @param student Valid pojo.
+     * @param result Processing request for errors on valid.
+     * @param model Spring Model for work with form attribute.
+     * @param redirectAttributes Spring model for send success response.
+     * @return "redirect:/list" redirect to main page.
+     * @throws WebException catch ServException.
      */
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
-    public String saveStudent(@Valid Student student, BindingResult result, Model model, final RedirectAttributes redirectAttributes) throws WebException {
-        //Student student=null;
+    public String saveStudent(@Valid Student student, BindingResult result, Model model,
+                              final RedirectAttributes redirectAttributes) throws WebException {
         if (result.hasErrors()) {
             List<Group> groups = null;
             try {
@@ -137,7 +141,13 @@ public class AppController {
         return "redirect:/list";
     }
 
-
+    /**
+     * This method will provide the medium to edit a student.
+     * @param id Get id student.
+     * @param model Spring Model for work with form attribute.
+     * @return "edit" page.
+     * @throws WebException catch ServException.
+     */
     @RequestMapping(value = {"/edit-{id}-student"}, method = RequestMethod.GET)
     public String editStudent(@PathVariable String id, Model model) throws WebException {
         Integer idd = Integer.parseInt(id);
@@ -156,9 +166,18 @@ public class AppController {
         return "edit";
     }
 
-
+    /**
+     * This method edit a student. Check validation field on student pojo.
+     * @param student Valid pojo.
+     * @param result Processing request for errors on valid.
+     * @param model Spring Model for work with form attribute.
+     * @param redirectAttributes Spring model for send success response.
+     * @return "redirect:/list" redirect to main page.
+     * @throws WebException catch ServException.
+     */
     @RequestMapping(value = {"/edit-{id}-student"}, method = RequestMethod.POST)
-    public String updateStudent(@Valid Student student, BindingResult result, Model model, final RedirectAttributes redirectAttributes) throws WebException {
+    public String updateStudent(@Valid Student student, BindingResult result, Model model,
+                                final RedirectAttributes redirectAttributes) throws WebException {
         if (result.hasErrors()) {
             List<Group> groups;
             try {
@@ -183,8 +202,16 @@ public class AppController {
         return "redirect:/list";
     }
 
+    /**
+     * This method will search student by string parametr search.
+     * @param search Request string parametr search.
+     * @param model Spring Model for work with form attribute.
+     * @return "main" page.
+     * @throws WebException catch ServException.
+     */
     @RequestMapping(value = {"/search"}, method = RequestMethod.GET)
-    public String findStudent(@RequestParam("search") String search, Model model) throws WebException {
+    public String findStudent(@RequestParam("search") String search,
+                              Model model) throws WebException {
         List<Student> students;
         try {
             students = facadeService.findStudents(search);
@@ -201,8 +228,15 @@ public class AppController {
         return "main";
     }
 
+    /**
+     *This method processing Group pojo object in spring form
+     * and response group object when incoming id or null parametr.
+     * @param binder Processing Group pojo object in spring form.
+     * @throws Exception catch ServException
+     */
     @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
+    protected void initBinder(ServletRequestDataBinder binder)
+            throws Exception {
         binder.registerCustomEditor(Group.class, "group", new PropertyEditorSupport() {
             @Override
             public void setAsText(String text) {

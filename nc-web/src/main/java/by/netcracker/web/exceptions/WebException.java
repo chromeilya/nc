@@ -1,7 +1,9 @@
 package by.netcracker.web.exceptions;
 
 /**
- * Created by ilya on 4/8/15.
+ * Create custom exception on web layer.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public class WebException extends Exception {
 

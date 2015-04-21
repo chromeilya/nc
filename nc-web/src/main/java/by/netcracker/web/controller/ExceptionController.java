@@ -9,12 +9,21 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by ilya on 4/19/15.
+ * This is controller advice. It is processing exception.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
+
 @ControllerAdvice
 public class ExceptionController {
     private static Logger log = Logger.getLogger(ExceptionController.class);
 
+    /**
+     * This method processing WebException and
+     * return "error" page and error message.
+     * @param ex Get WebException.
+     * @return ModelAndView - "error" page and error message.
+     */
     @ExceptionHandler(WebException.class)
     public ModelAndView customException(WebException ex) {
         ModelAndView model = new ModelAndView("error", "errMsg", ex.getMessage());
@@ -22,6 +31,11 @@ public class ExceptionController {
         return model;
     }
 
+    /**
+     * This method work when incoming Not Supported Exception in Http Request.
+     * Example: 405 error.
+     * @return ModelAndView - "error" page and error message
+     */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ModelAndView statusCustomException() {
         ModelAndView model = new ModelAndView("error", "errMsg", WebErrorCode.NC_WEB_007.toString());
