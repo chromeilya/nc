@@ -1,7 +1,9 @@
 package by.netcracker.dao.exceptions;
 
 /**
- * Created by ilya on 4/8/15.
+ * Enuming message error on dao layer.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public enum DaoErrorCode {
 

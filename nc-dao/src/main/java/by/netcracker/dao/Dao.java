@@ -10,6 +10,13 @@ import org.hibernate.Query;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Interface for DaoImpl class.
+ * <a href="https://www.ibm.com/developerworks/ru/library/j-genericdao/">Don't repeat dao</a>
+ * @see by.netcracker.dao.DaoImpl
+ * @author Hromenkov Ilya
+ * @version 1.0
+ */
 public interface Dao<T, PK extends Serializable> {
 
     T get(PK id) throws DaoException;

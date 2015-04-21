@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * Implementing GroupService interface.
  * Processing business-logic for work with Group.
+ * @see by.netcracker.serv.GroupService
  * @author Hromenkov Ilya
  * @version 1.0
  */

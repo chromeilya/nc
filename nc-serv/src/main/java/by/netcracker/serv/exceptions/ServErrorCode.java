@@ -2,7 +2,6 @@ package by.netcracker.serv.exceptions;
 
 /**
  * Enuming message error on service layer.
- * and send response to user.
  * @author Hromenkov Ilya
  * @version 1.0
  */

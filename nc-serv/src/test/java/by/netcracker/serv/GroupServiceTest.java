@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 
 /**
  * This class testing GroupService with mocks.
+ * @see by.netcracker.serv.GroupService
  * @author Hromenkov Ilya
  * @version 1.0
  */

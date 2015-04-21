@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Interface for StudentServiceImpl class.
+ * @see by.netcracker.serv.StudentServiceImpl
  * @author Hromenkov Ilya
  * @version 1.0
  */

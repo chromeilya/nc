@@ -21,6 +21,7 @@ import static org.mockito.Mockito.when;
 
 /**
  * This class testing FacadeService with mocks.
+ * @see by.netcracker.serv.FacadeService
  * @author Hromenkov Ilya
  * @version 1.0
  */

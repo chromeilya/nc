@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Interface using facade pattern for FacadeServiceImpl class.
+ * @see by.netcracker.serv.FacadeServiceImpl
  * @author Hromenkov Ilya
  * @version 1.0
  */

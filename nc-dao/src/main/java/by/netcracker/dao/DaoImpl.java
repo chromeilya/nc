@@ -13,11 +13,11 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by ilya on 4/8/15.
+ *Implementing Dao interface. Creating Dao generic.
+ * @see by.netcracker.dao.Dao
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
-
-
-//@Repository("dao")
 public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     private static Logger log = Logger.getLogger(DaoImpl.class);
 
@@ -33,10 +33,20 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
     public DaoImpl() {
     }
 
+    /**
+     * Getting hibernate session.
+     * @return sessionFactory.getCurrentSession().
+     */
     protected Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
+    /**
+     * Getting T entity by id.
+     * @param id
+     * @return entity.
+     * @throws DaoException
+     */
     @Override
     public T get(PK id) throws DaoException {
         try {
@@ -48,6 +58,11 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         }
     }
 
+    /**
+     * Getting all T entity
+     * @return
+     * @throws DaoException
+     */
     @Override
     public List getAll() throws DaoException {
         try {
@@ -59,6 +74,12 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         }
     }
 
+    /**
+     * Adding T entity.
+     * @param object T entity.
+     * @return id T entity.
+     * @throws DaoException
+     */
     @Override
     public PK add(T object) throws DaoException {
         try {
@@ -70,6 +91,11 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         }
     }
 
+    /**
+     * Updating T entity.
+     * @param object T entity.
+     * @throws DaoException
+     */
     @Override
     public void update(T object) throws DaoException {
         try {
@@ -80,6 +106,11 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         }
     }
 
+    /**
+     * Deleting T entity.
+     * @param object T entity.
+     * @throws DaoException
+     */
     @Override
     public void delete(T object) throws DaoException {
         try {
@@ -90,6 +121,12 @@ public class DaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         }
     }
 
+    /**
+     * Getting hql query.
+     * @param hql string param.
+     * @return query.
+     * @throws DaoException
+     */
     @Override
     public Query getQuery(String hql) throws DaoException {
         try {

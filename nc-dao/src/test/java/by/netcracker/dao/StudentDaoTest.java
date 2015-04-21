@@ -23,7 +23,11 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by ilya on 4/8/15.
+ * This class testing StudentDao with dbunit.
+ * @see by.netcracker.dao.DaoImpl
+ * @see by.netcracker.dao.configuration.DaoBeans
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 @DataSet
 @Transactional
@@ -38,12 +42,19 @@ public class StudentDaoTest extends UnitilsJUnit4 {
     private Student student3;
     private Integer studentId3 = 3;
 
+    /**
+     * Initialize spring context.
+     * @return AnnotationConfigApplicationContext
+     */
     @SpringApplicationContext
     public ConfigurableApplicationContext createApplicationContext() {
         return new AnnotationConfigApplicationContext(
                 HibernateConfiguration.class);
     }
 
+    /**
+     * Initialize custom parameter for tests.
+     */
     @Before
     public void initParam() {
 
@@ -81,6 +92,10 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         student3 = new Student(fio3, group2, type_stipend3, joinDate3);
     }
 
+    /**
+     * Testing studentDao.getAll().
+     * @throws DaoException
+     */
     @Test
     public void getAllStudent() throws DaoException {
         List<Student> students = null;
@@ -94,6 +109,10 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         assertEquals(students.size(), studentTest.size());
     }
 
+    /**
+     * Testing studentDao.get.
+     * @throws DaoException
+     */
     @Test
     public void getStudentById() throws DaoException {
         Student studentResult = null;
@@ -106,6 +125,10 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         assertEquals(student1, studentResult);
     }
 
+    /**
+     * Testing studentDao.add.
+     * @throws DaoException
+     */
     @Test
     public void addStudent() throws DaoException {
         Integer studentIdResult = null;
@@ -117,6 +140,10 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         assertNotNull(studentIdResult);
     }
 
+    /**
+     * Testing studentDao.update.
+     * @throws DaoException
+     */
     @Test
     public void updateStudent() throws DaoException {
         student1.setFio(student2.getFio());
@@ -131,6 +158,10 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         assertEquals(student1, studentResult);
     }
 
+    /**
+     * Testing studentDao.delete.
+     * @throws DaoException
+     */
     @Test
     public void deleteStudent() throws DaoException {
         Student studentResult = student2;
@@ -143,6 +174,10 @@ public class StudentDaoTest extends UnitilsJUnit4 {
         assertNull(studentResult);
     }
 
+    /**
+     * Testing studentDao.getQuery.
+     * @throws DaoException
+     */
     @Test
     public void findStudent() throws DaoException {
         String param = "%io%";

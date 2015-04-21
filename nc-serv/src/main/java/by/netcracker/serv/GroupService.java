@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Interface for GroupServiceImpl class.
+ * @see by.netcracker.serv.GroupServiceImpl
  * @author Hromenkov Ilya
  * @version 1.0
  */

@@ -15,6 +15,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * Configuring hibernate orm for application.
+ * @author Hromenkov Ilya
+ * @version 1.0
+ */
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({"by.netcracker.dao.configuration"})
@@ -24,6 +29,10 @@ public class HibernateConfiguration {
     @Autowired
     private Environment environment;
 
+    /**
+     * Creating local sessionFactory.
+     * @return sessionFactory.
+     */
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -33,6 +42,10 @@ public class HibernateConfiguration {
         return sessionFactory;
     }
 
+    /**
+     * Configuring datasource from property.
+     * @return dataSource.
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -43,6 +56,10 @@ public class HibernateConfiguration {
         return dataSource;
     }
 
+    /**
+     * Configuring hibernate properties.
+     * @return properties.
+     */
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
@@ -52,6 +69,11 @@ public class HibernateConfiguration {
         return properties;
     }
 
+    /**
+     * Configuring Transactional.
+     * @param s current SessionFactory.
+     * @return txManager.
+     */
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory s) {

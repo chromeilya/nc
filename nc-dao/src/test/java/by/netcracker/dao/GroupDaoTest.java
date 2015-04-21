@@ -19,7 +19,11 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by ilya on 4/20/15.
+ * This class testing GroupDao with dbunit.
+ * @see by.netcracker.dao.DaoImpl
+ * @see by.netcracker.dao.configuration.DaoBeans
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 @DataSet
 @Transactional
@@ -31,12 +35,19 @@ public class GroupDaoTest extends UnitilsJUnit4 {
     private Group group2;
     private Group group3;
 
+    /**
+     * Initialize spring context.
+     * @return AnnotationConfigApplicationContext
+     */
     @SpringApplicationContext
     public ConfigurableApplicationContext createApplicationContext() {
         return new AnnotationConfigApplicationContext(
                 HibernateConfiguration.class);
     }
 
+    /**
+     * Initialize custom parameter for tests.
+     */
     @Before
     public void initParam() {
 
@@ -57,6 +68,10 @@ public class GroupDaoTest extends UnitilsJUnit4 {
         group3 = new Group(group_num3, facult3);
     }
 
+    /**
+     * Testing groupDao.getAll().
+     * @throws DaoException
+     */
     @Test
     public void getAllGroup() throws DaoException {
         List<Group> groups = null;
@@ -70,6 +85,10 @@ public class GroupDaoTest extends UnitilsJUnit4 {
         assertEquals(groups.size(), groupTest.size());
     }
 
+    /**
+     * Testing groupDao.get.
+     * @throws DaoException
+     */
     @Test
     public void getGroupById() throws DaoException {
         Group groupResult = null;
@@ -82,6 +101,10 @@ public class GroupDaoTest extends UnitilsJUnit4 {
         assertEquals(group1, groupResult);
     }
 
+    /**
+     * Testing groupDao.add.
+     * @throws DaoException
+     */
     @Test
     public void addGroup() throws DaoException {
         Integer groupIdResult = null;
@@ -93,6 +116,10 @@ public class GroupDaoTest extends UnitilsJUnit4 {
         assertNotNull(groupIdResult);
     }
 
+    /**
+     * Testing groupDao.get.
+     * @throws DaoException
+     */
     @Test
     public void updateGroup() throws DaoException {
         group1.setFacult(group2.getFacult());
@@ -107,6 +134,10 @@ public class GroupDaoTest extends UnitilsJUnit4 {
         assertEquals(group1, groupResult);
     }
 
+    /**
+     * Testing groupDao.delete
+     * @throws DaoException
+     */
     @Test
     public void deleteGroup() throws DaoException {
         Group groupResult = group2;

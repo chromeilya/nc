@@ -16,6 +16,7 @@ import java.util.List;
 /**
  * Implementing StudentService interface.
  * Processing business-logic for work with Student.
+ * @see by.netcracker.serv.StudentService
  * @author Hromenkov Ilya
  * @version 1.0
  */

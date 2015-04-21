@@ -15,7 +15,6 @@ import static org.mockito.Mockito.*;
 
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +23,7 @@ import static org.junit.Assert.*;
 
 /**
  * This class testing GroupService with mocks.
+ * @see by.netcracker.serv.StudentService
  * @author Hromenkov Ilya
  * @version 1.0
  */

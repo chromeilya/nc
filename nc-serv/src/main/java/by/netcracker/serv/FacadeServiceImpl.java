@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Implementing FacadeService interface.
  * Connecting StudentService and GroupService in general class.
+ * @see by.netcracker.serv.FacadeService
  * @author Hromenkov Ilya
  * @version 1.0
  */
