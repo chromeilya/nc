@@ -15,3 +15,12 @@ nc-web/nc-web.iml
 nc-web/target
 
 nc.iml
+
+target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml
+
+target/javadoc-bundle-options/package-list
+
+
+nc-serv/src/main/java/by/netcracker/serv/Serv.java
+
+nc-serv/src/main/java/by/netcracker/serv/ServImpl.java

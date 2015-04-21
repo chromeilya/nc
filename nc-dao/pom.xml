@@ -80,7 +80,6 @@
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <version>3.1</version>
                 <configuration>
                     <url>jdbc:mysql://mysql21029-chromeilya.mycloud.by/NC</url>
                     <user>root</user>
