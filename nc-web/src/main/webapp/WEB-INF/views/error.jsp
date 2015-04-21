@@ -11,6 +11,8 @@
 <head>
 </head>
 <body>
-<h1>${errMsg}</h1>
+<div class="warn">
+<h2 class="stud-h3">${errMsg}</h2>
+</div>
 </body>
 </html>

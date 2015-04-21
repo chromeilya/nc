@@ -11,7 +11,9 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
- * Created by ilya on 4/8/15.
+ * This is Student pojo.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 @Entity
 @Table(name = "T_STUDENT")

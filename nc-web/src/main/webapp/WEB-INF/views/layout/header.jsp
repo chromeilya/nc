@@ -8,17 +8,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="wraper">
-    <a href="/netcracker/">Main</a>
-    <a href="/netcracker/new">Create student</a>
-
-    <div class="searchform">
-        <br/>
-
-        <form method="GET" action="search" accept-charset="utf-8">
-            <label for="search">Search: </label>
-            <input onfocus type="text" id="search" name="search"/>
-            <input type="submit"/>
-        </form>
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li><a href="/netcracker/">Main</a></li>
+            <li><a href="/netcracker/new">Create student</a></li>
+            <li>
+                <div class="searchform">
+                    <form class="navbar-search" method="GET" action="search" accept-charset="utf-8">
+                        <input class="input-long search-query" type="text" placeholder="Search.." name="search"/>
+                        <input class="btn btn-small" type="submit"/>
+                    </form>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

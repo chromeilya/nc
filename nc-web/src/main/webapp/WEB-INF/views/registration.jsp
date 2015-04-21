@@ -11,16 +11,11 @@
 
 <html>
 <head>
-    <style>
-        .error {
-            color: #ff0000;
-        }
-    </style>
 </head>
 <body>
-<div class="wraper">
+<div class="wrapper">
     <div>
-        <h2>Create new student</h2>
+        <h3 class="stud-h3">Create new student</h3>
         <form:form method="POST" modelAttribute="student">
             <table>
                 <tr>
@@ -46,7 +41,7 @@
                     <td><form:errors path="joinDate" cssClass="error"/></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><input type="submit" value="Register"/></td>
+                    <td colspan="3"><input class="btn" type="submit" value="Register"/></td>
                 </tr>
             </table>
         </form:form>
