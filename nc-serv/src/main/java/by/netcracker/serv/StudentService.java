@@ -6,7 +6,9 @@ import by.netcracker.serv.exceptions.ServException;
 import java.util.List;
 
 /**
- * Created by ilya on 4/13/15.
+ * Interface for StudentServiceImpl class.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public interface StudentService {
 

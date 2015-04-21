@@ -22,7 +22,9 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.*;
 
 /**
- * Created by ilya on 4/20/15.
+ * This class testing GroupService with mocks.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 @RunWith(MockitoJUnitRunner.class)
 public class GroupServiceTest {
@@ -38,6 +40,9 @@ public class GroupServiceTest {
     private Group group3;
     private List<Group> groups;
 
+    /**
+     * Initialize custom parameter for tests.
+     */
     @Before
     public void initParam(){
 
@@ -62,6 +67,9 @@ public class GroupServiceTest {
         groups= Arrays.asList(group1, group2);
     }
 
+    /**
+     * Testing groupService.getAllGroup().
+     */
     @Test
     public void getAllGroup(){
         try {
@@ -76,6 +84,9 @@ public class GroupServiceTest {
         }
     }
 
+    /**
+     * Testing groupService.getGroupById.
+     */
     @Test
     public void getGroupById(){
         try {

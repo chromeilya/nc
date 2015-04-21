@@ -6,7 +6,9 @@ import by.netcracker.serv.exceptions.ServException;
 import java.util.List;
 
 /**
- * Created by ilya on 4/20/15.
+ * Interface for GroupServiceImpl class.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public interface GroupService {
 

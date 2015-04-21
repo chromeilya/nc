@@ -14,7 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by ilya on 4/13/15.
+ * Implementing StudentService interface.
+ * Processing business-logic for work with Student.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 @Service("studentService")
 @Transactional
@@ -27,6 +30,11 @@ public class StudentServiceImpl implements StudentService {
     StudentServiceImpl() {
     }
 
+    /**
+     * This method geting all students.
+     * @return students.
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     @Override
     public List<Student> getAllStudent() throws ServException {
         List<Student> students;
@@ -39,6 +47,12 @@ public class StudentServiceImpl implements StudentService {
         return students;
     }
 
+    /**
+     * This method deleting student by id.
+     * @param id Student id.
+     * @return true if student successfully is deleted.
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     @Override
     public Boolean deleteStudentById(Integer id) throws ServException {
         Student student;
@@ -52,6 +66,12 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+    /**
+     * This method saving new student.
+     * @param student
+     * @return true if student is successfully saved.
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     @Override
     public Boolean saveStudent(Student student) throws ServException {
         try {
@@ -63,6 +83,12 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+    /**
+     * This method getting student by id.
+     * @param id Student id.
+     * @return student.
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     @Override
     public Student getStudentById(Integer id) throws ServException {
         Student student;
@@ -75,6 +101,12 @@ public class StudentServiceImpl implements StudentService {
         return student;
     }
 
+    /**
+     * This method updating student.
+     * @param student
+     * @return true if student successfully is updated.
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     @Override
     public Boolean updateStudent(Student student) throws ServException {
         try {
@@ -86,7 +118,12 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
-
+    /**
+     * This method finding students.
+     * @param param String parametr for find students.
+     * @return students
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     public List<Student> findStudents(String param) throws ServException {
         List<Student> students;
         param = '%' + param + '%';

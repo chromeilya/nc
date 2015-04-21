@@ -13,7 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by ilya on 4/20/15.
+ * Implementing GroupService interface.
+ * Processing business-logic for work with Group.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 @Service("groupService")
 @Transactional
@@ -27,6 +30,11 @@ public class GroupServiceImpl implements GroupService {
     public GroupServiceImpl() {
     }
 
+    /**
+     * This method getting all groups.
+     * @return groups.
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     @Override
     public List<Group> getAllGroup() throws ServException {
         List<Group> groups;
@@ -39,6 +47,12 @@ public class GroupServiceImpl implements GroupService {
         return groups;
     }
 
+    /**
+     * This method getting group by id.
+     * @param id Group id.
+     * @return group.
+     * @throws ServException catch DaoException, create new ServException and pushing up.
+     */
     @Override
     public Group getGroupById(Integer id) throws ServException {
         Group group;

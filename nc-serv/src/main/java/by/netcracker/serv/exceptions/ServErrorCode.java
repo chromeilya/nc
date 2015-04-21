@@ -1,7 +1,10 @@
 package by.netcracker.serv.exceptions;
 
 /**
- * Created by ilya on 4/8/15.
+ * Enuming message error on service layer.
+ * and send response to user.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public enum ServErrorCode {
 

@@ -1,6 +1,5 @@
 package by.netcracker.serv;
 
-import by.netcracker.dao.exceptions.DaoException;
 import by.netcracker.pojo.Group;
 import by.netcracker.pojo.Student;
 import by.netcracker.serv.exceptions.ServException;
@@ -21,7 +20,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by ilya on 4/20/15.
+ * This class testing FacadeService with mocks.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 @RunWith(MockitoJUnitRunner.class)
 public class FacadeServiceTest{
@@ -45,7 +46,9 @@ public class FacadeServiceTest{
     private List<Student> students;
     private List<Group> groups;
 
-
+    /**
+     * Initialize custom parameter for tests.
+     */
     @Before
     public void setUp(){
 
@@ -87,7 +90,9 @@ public class FacadeServiceTest{
 
     }
 
-
+    /**
+     * Testing facadeService.getAllStudent().
+     */
     @Test
     public void getAllStudent(){
         try {
@@ -98,6 +103,9 @@ public class FacadeServiceTest{
         }
     }
 
+    /**
+     * Testing facadeService.deleteStudentById.
+     */
     @Test
     public void deleteStudentById(){
         try {
@@ -108,6 +116,9 @@ public class FacadeServiceTest{
         }
     }
 
+    /**
+     * Testing facadeService.saveStudent.
+     */
     @Test
     public void saveStudent(){
         try {
@@ -118,6 +129,9 @@ public class FacadeServiceTest{
         }
     }
 
+    /**
+     * Testing facadeService.getStudentById.
+     */
     @Test
     public void getStudentById(){
         try {
@@ -128,6 +142,9 @@ public class FacadeServiceTest{
         }
     }
 
+    /**
+     * Testing facadeService.updateStudent.
+     */
     @Test
     public void updateStudent(){
         student2.setFio(student1.getFio());
@@ -139,6 +156,9 @@ public class FacadeServiceTest{
         }
     }
 
+    /**
+     * Testing facadeService.findStudents.
+     */
     @Test
     public void findStudents(){
         try {
@@ -149,6 +169,9 @@ public class FacadeServiceTest{
         }
     }
 
+    /**
+     * Testing facadeService.getAllGroup().
+     */
     @Test
     public void getAllGroup(){
         try {
@@ -159,6 +182,9 @@ public class FacadeServiceTest{
         }
     }
 
+    /**
+     * Testing facadeService.getGroupById.
+     */
     @Test
     public void getGroupById(){
         try {

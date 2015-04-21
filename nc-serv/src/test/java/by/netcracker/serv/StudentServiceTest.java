@@ -23,9 +23,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by ilya on 4/20/15.
+ * This class testing GroupService with mocks.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
-
 @RunWith(MockitoJUnitRunner.class)
 public class StudentServiceTest {
 
@@ -45,6 +46,9 @@ public class StudentServiceTest {
 
     private List<Student> students;
 
+    /**
+     * Initialize custom parameter for tests.
+     */
     @Before
     public void initParam(){
 
@@ -86,7 +90,9 @@ public class StudentServiceTest {
         students= Arrays.asList(student1, student2);
     }
 
-
+    /**
+     * Testing studentService.getAllStudent().
+     */
     @Test
     public void getAllStudent(){
         try{
@@ -101,6 +107,9 @@ public class StudentServiceTest {
         }
     }
 
+    /**
+     * Testing studentService.deleteStudentById.
+     */
     @Test
     public void deleteStudentById(){
         try {
@@ -114,6 +123,9 @@ public class StudentServiceTest {
         }
     }
 
+    /**
+     * Testing studentService.saveStudent.
+     */
     @Test
     public void saveStudent(){
         try {
@@ -127,6 +139,9 @@ public class StudentServiceTest {
         }
     }
 
+    /**
+     * Testing studentService.getStudentById.
+     */
     @Test
     public void getStudentById(){
         try {
@@ -140,6 +155,9 @@ public class StudentServiceTest {
         }
     }
 
+    /**
+     * Testing studentService.updateStudent.
+     */
     @Test
     public void updateStudent(){
         student1.setFio(student2.getFio());
