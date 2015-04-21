@@ -1,9 +1,9 @@
 package by.netcracker.web.exceptions;
 
-import by.netcracker.serv.exceptions.ServErrorCode;
-
 /**
- * Created by ilya on 4/8/15.
+ * Create custom exception on web layer.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public class WebException extends Exception {
 

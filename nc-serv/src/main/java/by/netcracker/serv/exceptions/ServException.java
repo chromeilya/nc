@@ -1,7 +1,9 @@
 package by.netcracker.serv.exceptions;
 
 /**
- * Created by ilya on 4/8/15.
+ * Create custom exception on service layer.
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
 public class ServException extends Exception {
 

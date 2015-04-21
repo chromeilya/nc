@@ -9,20 +9,30 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by ilya on 4/8/15.
+ * Creating dao spring beans.
+ * @see by.netcracker.dao.DaoImpl
+ * @author Hromenkov Ilya
+ * @version 1.0
  */
-
 @Configuration
-@ComponentScan({ "by.netcracker.dao"})
+@ComponentScan({"by.netcracker.dao"})
 public class DaoBeans {
 
-    @Bean(name="studentDao")
-    public Dao<Student, Integer> studentDao(){
+    /**
+     * Create studentDao Bean.
+     * @return studentDao Bean.
+     */
+    @Bean(name = "studentDao")
+    public Dao<Student, Integer> studentDao() {
         return new DaoImpl<Student, Integer>(Student.class);
     }
 
-    @Bean(name="groupDao")
-    public Dao<Group, Integer> groupDao(){
+    /**
+     * Create groupDao Bean.
+     * @return groupDao bean.
+     */
+    @Bean(name = "groupDao")
+    public Dao<Group, Integer> groupDao() {
         return new DaoImpl<Group, Integer>(Group.class);
     }
 
