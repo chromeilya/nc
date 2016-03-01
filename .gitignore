@@ -16,6 +16,8 @@ nc-web/target
 
 nc.iml
 
+target
+
 target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml
 
 target/javadoc-bundle-options/package-list
